@@ -1,5 +1,5 @@
-# ICP Marketing Website
-ICP Marketing Website Static UI
+# Gulp Starter Project
+Gulp Starter Project which uses Less and HTML partials
 
 ## Workflow ##
 * Working HTML Files with added includes - `src/src-html`

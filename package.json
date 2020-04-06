@@ -1,7 +1,7 @@
 {
-  "name": "icp",
+  "name": "gulp starter",
   "version": "1.0.0",
-  "description": "ICP Marketing Website",
+  "description": "gulp starter with less and partials",
   "main": "index.js",
   "scripts": {
     "test": "npm run start"
