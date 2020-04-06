@@ -1,0 +1,474 @@
+// Mixins to use on the IH build
+// import this file using @import "mixins"
+
+@import "flexbox";
+
+.visually-hidden() {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}
+
+.reset-visually-hidden() {
+    position: static;
+    overflow: visible;
+    clip: auto;
+    height: auto;
+    width: auto;
+    margin: 0;
+}
+
+.perspective (@length) {
+    -webkit-perspective: @length;
+    -moz-perspective: @length;
+    perspective: @length;
+}
+
+.transform-style (@value) {
+    -webkit-transform-style: @value;
+    -moz-transform-style: @value;
+    transform-style: @value;
+}
+
+.backface-visibility (@value) {
+    -webkit-backface-visibility: @value;
+    -moz-backface-visibility: @value;
+    backface-visibility: @value;
+}
+
+.rotate (@deg) {
+    -webkit-transform: rotate(@deg);
+    -moz-transform: rotate(@deg);
+    -ms-transform: rotate(@deg);
+    -o-transform: rotate(@deg);
+}
+
+.transition (@transition) {
+    -webkit-transition: @transition;
+    -moz-transition: @transition;
+    -ms-transition: @transition;
+    -o-transition: @transition;
+    transition: @transition;
+}
+
+.transition-prefix (@transition) {
+    -webkit-transition:~"-webkit-@{transition}";
+    -moz-transition:~"-moz-@{transition}";
+    -ms-transition:~"-ms-@{transition}";
+    -o-transition:~"-o-@{transition}";
+    transition: @transition;
+}
+
+.transition-multiple-props(...) {
+    //http://stackoverflow.com/a/10413399/1582783
+    @props: ~`"@{arguments}".replace(/[\[\]]/g, '')`;
+    -webkit-transition: @props;
+    -moz-transition: @props;
+    -o-transition: @props;
+    transition: @props;
+}
+
+
+.transition-property (...) {
+    @props: ~`"@{arguments}".replace(/[\[\]]/g, '')`;
+    -webkit-transition-property: @props;
+    -moz-transition-property: @props;
+    -ms-transition-property: @props;
+    -o-transition-property: @props;
+    transition-property: @props;
+}
+
+.transition-timing-function (@function) {
+    -webkit-transition-timing-function: @function;
+    -moz-transition-timing-function: @function;
+    -ms-transition-timing-function: @function;
+    -o-transition-timing-function: @function;
+    transition-timing-function: @function;
+}
+
+.transition-duration (@duration) {
+    -webkit-transition-duration: @duration;
+    -moz-transition-duration: @duration;
+    -ms-transition-duration: @duration;
+    -o-transition-duration: @duration;
+    transition-duration: @duration;
+}
+
+.transition-delay (@delay) {
+    -webkit-transition-delay: @delay;
+    -moz-transition-delay: @delay;
+    -ms-transition-delay: @delay;
+    -o-transition-delay: @delay;
+    transition-delay: @delay;
+}
+
+.transition-transform (@settings) {
+    -webkit-transition: -webkit-transform @settings;
+    -moz-transition: -moz-transform @settings;
+    -ms-transition: -ms-transform @settings;
+    -o-transition: -o-transform @settings;
+    transition: transform @settings;
+}
+
+.transition-filter (@settings) {
+    -webkit-transition: -webkit-filter @settings;
+    -moz-transition: -moz-filter @settings;
+    -ms-transition: -ms-filter @settings;
+    -o-transition: -o-filter @settings;
+    transition: filter @settings, -webkit-filter @settings, -moz-filter @settings, -ms-filter @settings, -o-filter @settings;
+    // comma separated list of transitions required here, as a singular
+    // prefixed transition will otherwise get overwritten, and break
+    // in browsers that don't yet support unprefixed transition: filter
+}
+
+.transform (@transform) {
+    -webkit-transform: @transform;
+    -moz-transform: @transform;
+    -ms-transform: @transform;
+    -o-transform: @transform;
+    transform: @transform;
+}
+
+.transform-origin (@x: center, @y: center) {
+    -webkit-transform-origin: @x @y;
+    -moz-transform-origin: @x @y;
+    -ms-transform-origin: @x @y;
+    -o-transform-origin: @x @y;
+}
+
+.animation (@string) {
+    -webkit-animation: @string;
+    -moz-animation: @string;
+    -o-animation: @string;
+    animation: @string;
+}
+
+.border-radius (@amount) {
+    -webkit-border-radius: @amount;
+    -moz-border-radius: @amount;
+    -o-border-radius: @amount;
+    border-radius: @amount;
+}
+
+.text-shadow (@string: 0 1px 3px rgba(0, 0, 0, 0.25)) {
+    text-shadow: @string;
+}
+
+.box-shadow (@string) {
+    -webkit-box-shadow: @string;
+    -moz-box-shadow: @string;
+    box-shadow: @string;
+}
+
+.box-sizing (@string) {
+    -webkit-box-sizing: @string;
+    -moz-box-sizing: @string;
+    box-sizing: @string;
+}
+
+.user-select (@user-select, @touchAction: pan-y, @highlightColor: transparent) {
+    -webkit-touch-callout: @user-select;
+    -webkit-user-select: @user-select;
+    -khtml-user-select: @user-select;
+    -moz-user-select: @user-select;
+    -ms-user-select: @user-select;
+    user-select: @user-select;
+    -ms-touch-action: @touchAction;
+    touch-action: @touchAction;
+    -webkit-tap-highlight-color: @highlightColor;
+}
+
+.user-drag (@value) {
+    -webkit-user-drag: @value;
+    -moz-user-drag: @value;
+    user-drag: @value;
+}
+
+.inline-block () {
+    display: -moz-inline-stack;
+    display: inline-block;
+    vertical-align: top;
+    *vertical-align: auto;
+    zoom: 1;
+    *display: inline;
+}
+
+.blur(@value) {
+    filter: blur(@value);
+    -webkit-filter: blur(@value);
+}
+
+//http://css-tricks.com/snippets/css/useful-css3-less-mixins/
+.gradient (@startColor: #eee, @endColor: white) {
+    background-color: @startColor;
+    background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+    background: -webkit-linear-gradient(top, @startColor, @endColor);
+    background: -moz-linear-gradient(top, @startColor, @endColor);
+    background: -ms-linear-gradient(top, @startColor, @endColor);
+    background: -o-linear-gradient(top, @startColor, @endColor);
+}
+
+.gradient-vertical (@startColor: #eee, @endColor: white) {
+    .gradient(@startColor, @endColor);
+}
+
+.gradient-horizontal (@startColor: #eee, @endColor: white) {
+    background-color: @startColor;
+    background-image: -webkit-gradient(linear, left top, right top, from(@startColor), to(@endColor));
+    background-image: -webkit-linear-gradient(left, @startColor, @endColor);
+    background-image: -moz-linear-gradient(left, @startColor, @endColor);
+    background-image: -ms-linear-gradient(left, @startColor, @endColor);
+    background-image: -o-linear-gradient(left, @startColor, @endColor);
+}
+
+.font-size(@sizeValue) {
+    @remValue: ((@sizeValue/100) * 62.5);
+    @pxValue: (@sizeValue * 10);
+    font-size:~"@{pxValue}px";
+    font-size:~"@{remValue}rem";
+}
+
+.font-size(@sizeValue, @lineHeight) {
+    .font-size(@sizeValue);
+    line-height: (@lineHeight / @sizeValue );
+}
+
+// specifies relative line-height if font sizeValue is known
+.line-height(@sizeValue, @lineHeight) {
+    line-height: (@lineHeight / @sizeValue );
+}
+
+.column-count(@countValue) {
+    -webkit-column-count: @countValue;
+    -moz-column-count: @countValue;
+    column-count: @countValue;
+}
+
+.column-gap(@gapValue) {
+    -webkit-column-gap: @gapValue;
+    -moz-column-gap: @gapValue;
+    column-gap: @gapValue;
+}
+
+.break-inside(@breakValue) {
+    -webkit-column-break-inside: @breakValue;
+    /* Chrome, Safari, Opera */
+    page-break-inside: @breakValue;
+    /* Firefox */
+    break-inside: @breakValue;
+    /* IE 10+ */
+}
+
+.clearfix() {
+
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+.font-size-vw(@width, @px-at-width) {
+    .font-size(@px-at-width / 10);
+    @vwValue: @px-at-width / @width * 100;
+    font-size:~"@{vwValue}vw";
+}
+
+.selection-background(@background) {
+
+    //Required for FF 2.0 - latest
+    ::-moz-selection {
+        background: @background;
+    }
+
+    ::selection {
+        background: @background;
+    }
+}
+
+.ih-cols(@gutter) {
+    margin-left: -@gutter;
+    padding: 0;
+}
+
+.ih-cols-column(@items-per-row, @gutter) {
+    @width: (100% / @items-per-row);
+    width: calc(~"@{width} - @{gutter}");
+    margin-left: @gutter;
+}
+
+.tab-focus() {
+    outline: 0;
+    cursor: pointer;
+}
+
+.placeholder(@color: false) {
+    &::-webkit-input-placeholder {
+        color: @color;
+    }
+
+    &:-moz-placeholder {
+        color: @color;
+    }
+
+    &::-moz-placeholder {
+        color: @color;
+    }
+
+    &:-ms-input-placeholder {
+        color: @color;
+    }
+
+    &:focus::-webkit-input-placeholder {
+        color: transparent;
+    }
+
+    &:focus:-moz-placeholder {
+        color: transparent;
+    }
+
+    /* FF 4-18 */
+    &:focus::-moz-placeholder {
+        color: transparent;
+    }
+
+    /* FF 19+ */
+    &:focus:-ms-input-placeholder {
+        color: transparent;
+    }
+
+    /* IE 10+ */
+}
+
+.middle() {
+    .transform(translate3d(-50%, -50%, 0));
+    left: 50%;
+    position: absolute;
+    top: 50%;
+}
+
+.section-divider() {
+    .transform(translateX(-50%));
+    width: 140px;
+    border-bottom: 1px solid @ih-secondary;
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+}
+
+.horizontal-dotted-line(@color: @ih-black) {
+    border-bottom: 1px dotted @color;
+}
+
+.ih-rotate-text(@deg) {
+    -webkit-transform: rotate(@deg);
+    -moz-transform: rotate(@deg);
+    -ms-transform: rotate(@deg);
+    -o-transform: rotate(@deg);
+}
+
+.ih-background-size() {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.mixin-loop (@i) when (@i > 0) {
+    &:nth-child(@{i}) {
+        transition-delay: @i * 100ms !important;
+    }
+
+    .mixin-loop(@i - 1);
+}
+
+.aspect-ratio(@width, @height) {
+    position: relative;
+
+    &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: (@height / @width) * 100%;
+    }
+}
+
+// Object fit
+.object-fit(@fit: cover) {
+    -o-object-fit: @fit;
+    object-fit: @fit;
+    font-family: 'object-fit: @{fit}',
+    @fontsMain;
+}
+
+// Object fit with position
+.object-fit(@fit: cover, @position) {
+    -o-object-fit: @fit;
+    object-fit: @fit;
+    -o-object-position: @position;
+    object-position: @position;
+    font-family: 'object-fit: @{fit}; object-position: @{position}',
+    @fontsMain;
+}
+
+.ih-inner-overlay {
+    content: '';
+    display: block;
+    position: absolute;
+    background: @ih-black;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    opacity: @opaque-0;
+    transition: opacity 0.15s ease-out;
+}
+
+.ellipse () {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.ih-clip-path (@clip) {
+    -webkit-clip-path: @clip;
+    -moz-clip-path: @clip;
+    -ms-clip-path: @clip;
+    clip-path: @clip;
+}
+
+.sr-only {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    .ih-clip-path(inset(50%));
+    height: 1px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    white-space: nowrap !important;
+}
+
+.custom-scroll {
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #ddd;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #666;
+    }
+}

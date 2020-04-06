@@ -1,0 +1,57 @@
+@font-face {
+    font-family: "SAP-icons";
+    src: url('../fonts/SAP-icons.eot');
+    src: url('../fonts/SAP-icons.eot?#iefix') format('eot'),
+        url('../fonts/SAP-icons.woff2') format('woff2'),
+        url('../fonts/SAP-icons.woff') format('woff'),
+        url('../fonts/SAP-icons.ttf') format('truetype'),
+        url('../fonts/SAP-icons.svg#SAP-icons') format('svg');
+}
+
+.ih-icn-base-pseudo {
+    font-family: "SAP-icons";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    // speak: none; // only necessary if not using the private unicode range (firstGlyph option)
+    text-decoration: none;
+    text-transform: none;
+}
+
+.ih-icn-char(@filename) {
+    @account: "\e001";
+    @bell: "\e23a";
+    @aggregator : '\e0f4';
+    content: @@filename;
+    
+}
+
+.ih-icn(@filename, @insert: before) {
+    @pseudo-selector: ~":@{insert}";
+
+    &@{pseudo-selector} {
+        &:extend(.ih-icn-base-pseudo);
+        .ih-icn-char(@filename);
+    }
+}
+
+.ih-icn-post(@filename, @insert: after) {
+    @pseudo-selector: ~":@{insert}";
+
+    &@{pseudo-selector} {
+        &:extend(.ih-icn-base-pseudo);
+        .ih-icn-char(@filename);
+    }
+}
+// :before Tags css
+.ih-icn-account {
+    .ih-icn(account);
+}
+
+// :after Tags css
+.ih-icn-post-account {
+    .ih-icn-post(account);
+}
+

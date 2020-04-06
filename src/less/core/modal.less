@@ -1,0 +1,178 @@
+/* Modal Less */
+
+.ih-app-modal {
+    .transform(translateZ(0));
+    display: none;
+    bottom: 0;
+    padding: 10px;
+    left: 40%;
+    overflow: hidden;
+    position: fixed;
+    right: 0;
+    top: 20%;
+    z-index: 100;
+    -webkit-overflow-scrolling: touch;
+    &.show-modal {
+        display: block;
+    }
+    .ih-app-modal-content {
+        .box-shadow(0 0 5px #888);
+        .border-radius(8px);
+        background-color: @ih-white;
+        cursor: auto;
+        overflow: hidden;
+        overflow-y: auto;
+        left: 0;
+        padding: 13px 13px;
+        position: relative;
+        width: 300px;
+        z-index: 102; // Hides safari scrollbar
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        .ih-app-modal-header {
+            .clearfix();
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid @ih-pinkish-grey;
+        }
+        .ih-app-modal-body {
+            padding: 0 8px;
+        }
+        .ih-app-modal-title {
+            font-size: 14px;
+            font-weight: 600;
+            font-style: normal;
+            text-align: left;
+            color: @ih-charcoal-grey;
+            display: inline-block;
+            vertical-align: top;
+            margin-top: 1px;
+        }
+        .ih-modal-help-btn,
+        .ih-modal-close-btn {
+            float: right;
+            margin: 0 5px;
+            cursor: pointer;
+            img {
+                height: 16px;
+                width: 16px;
+            }
+        }
+        .ih-app-form-group {
+            margin: 6px 0;
+        }
+        .ih-app-form-label {
+            font-size: 9.5px;
+            font-weight: bold;
+            font-style: normal;
+            font-stretch: normal;
+            letter-spacing: normal;
+            text-align: left;
+            color: @ih-charcoal-grey;
+            width: 100%;
+            display: inline-block;
+            text-transform: uppercase;
+            margin-bottom: 7px;
+        }
+        .ih-app-form-input-field {
+            font-size: 9.5px;
+            font-weight: bold;
+            font-style: normal;
+            font-stretch: normal;
+            letter-spacing: normal;
+            text-align: left;
+            color: @ih-charcoal-grey;
+            border: 1px solid @ih-grey-3;
+            padding: 12px 16px;
+            width: 100%;
+        }
+        
+        .ih-app-form-btn {
+            .border-radius(4px);
+            font-size: 11px;
+            font-weight: bold;
+            font-style: normal;
+            font-stretch: normal;
+            letter-spacing: normal;
+            text-align: center;
+            color: @ih-charcoal-grey;
+            text-transform: uppercase;
+            padding: 11px 30px;
+            border: 1px solid @ih-muted-green-1;
+            margin: 0 12px;
+            cursor: pointer;
+            &.ih-app-form-cancel-btn {
+                color: @ih-muted-green-1;
+            }
+            &.ih-app-form-submit-btn {
+                background-color: @ih-muted-green-1;
+                color: @ih-white;
+            }
+        }
+        .ih-app-modal-footer {
+            text-align: center;
+            margin: 25px 0 7px;
+            color: red;
+            &.ih-slate-3 .ih-app-form-btn {
+                border: 1px solid @ih-slate-3;
+                &.ih-app-form-cancel-btn {
+                    color: @ih-slate-3;
+                }
+                &.ih-app-form-submit-btn {
+                    background-color: @ih-slate-3;
+                    color: @ih-white;
+                }
+            }
+        }
+    }
+    &.ih-modal-app2 {
+        left: auto;
+        right: 20%;
+        top: 15%;
+        .ih-app-form-btn {
+            border: 1px solid @ih-mango-1;
+            &.ih-app-form-cancel-btn {
+                color: @ih-mango-1;
+            }
+            &.ih-app-form-submit-btn {
+                background-color: @ih-mango-1;
+                color: @ih-white;
+            }
+        }
+    }
+    .ih-app-tabs-menu {
+        .flex-display();
+        .justify-content(space-between);
+    }
+    .ih-app-tabs-menu-item {
+        font-size: 9.5px;
+        font-weight: bold;
+        font-style: normal;
+        font-stretch: normal;
+        letter-spacing: normal;
+        text-align: center;
+        color: @ih-charcoal-grey;
+        text-transform: uppercase;
+        display: inline-block;
+        border-bottom: 1px solid @ih-white;
+        padding: 10px 15px 8px;
+        cursor: pointer;
+        &.active {
+            color: @ih-mango-1;
+            border-color: @ih-mango-1;
+        }
+    }
+    .ih-app-tab-container {
+        max-height: 300px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}
+// Global Tab component
+.ih-app-tab-container {
+    display: none;
+    &.active {
+        display: block;
+    }
+}
