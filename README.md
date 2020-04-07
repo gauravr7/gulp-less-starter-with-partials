@@ -13,4 +13,4 @@ Gulp Starter Project which uses Less and HTML partials
 
 ## Gulp Task ##
 * default task : `gulp`
-* gulp task consist of (Server, less compiler, HTML\Less Watcher) 
+* gulp task consist of (File-include for partials, Server, less compiler, HTML\Less Watcher) 

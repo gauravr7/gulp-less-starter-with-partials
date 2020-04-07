@@ -13,7 +13,7 @@ var gulp = require('gulp'),
     };
 
 //open dev server
-gulp.task('open', function () {
+gulp.task('open', ['convertless'], function () {
     gulp.src('src')
         .pipe(open({
             uri: 'http://localhost:4000/html/home.html'
